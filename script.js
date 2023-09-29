@@ -24,7 +24,21 @@ function generatePassword() {
   //Confirm button was pressed 
   console.log("Button was pressed")
 
-  //Confirm  
+  //Prompt for password criteria
+  var passwordLength = prompt('Please select a password length of at least 8 but no more than 128')
+
+  //User prompted to enter a password length of between 8 - 128
+  //Question will repeat until user enter a valid length
+  while (passwordLength < 8 || passwordLength > 128){
+    alert('Please enter a valid value')
+    console.log('Alert: Password was not generated')
+    passwordLength = prompt('Please enter a password length between 8 and 128')
+  }
+
+  //Verify length that was selected
+    console.log(passwordLength)
+
+    alert('Please select the characters you want included in password.')
 }
 
 // Write password to the #password input
