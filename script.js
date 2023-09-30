@@ -39,7 +39,50 @@ function generatePassword() {
     console.log(passwordLength)
 
     alert('Please select the characters you want included in password.')
+
+    //Have user pick the characters they want in password
+    var specialChar = confirm ('Do you want special characters included in password?')
+    console.log(specialChar)
+
+    var upperCase = confirm('Do you want uppercase letters included in password?')
+    console.log(upperCase)
+
+    var lowerCase = confirm('Do you want lowercase letters included in password?')
+    console.log(lowerCase)
+
+    var num = confirm('Do you want numbers included in password?')
+    console.log(num)
+
+    while (!specialChar && !upperCase && !lowerCase && !num) {
+    alert('Please choose at least one value')
+    console.log('Alert: No character was selected')
+    
+    specialChar = confirm ('Do you want special characters included in password?')
+    console.log(specialChar)
+
+    upperCase = confirm('Do you want uppercase letters included in password?')
+    console.log(upperCase)
+
+    lowerCase = confirm('Do you want lowercase letters included in password?')
+    console.log(lowerCase)
+
+    num = confirm('Do you want numbers included in password?')
+    console.log(num)
+
+    alert ('Please wait while your password is being generated')
+    }
+
+    console.log('Password Generating')
 }
+
+//When 4 characters are selected
+
+//When 3 characters are selected
+
+//When 2 characters are selected
+
+//Only 1 character was selected
+
 
 // Write password to the #password input
 function writePassword() {
