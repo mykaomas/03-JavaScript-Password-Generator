@@ -24,7 +24,7 @@ function generatePassword() {
   //Confirm button was pressed 
   console.log("Button was pressed")
 
-  //vars for password length
+  //var for password length
   var passwordLength = prompt('Please select password length between 8 and 128')
 
   //User prompted to enter a password length of between 8 - 128
@@ -146,14 +146,17 @@ function generatePassword() {
   console.log(userPassword)
 }
 
-//Passowrd length
+//Spaces for passowrd length
 randomPassword = ''
 
 // Create a loop to randomize selection
 for (var i = 0; i < passwordLength; i++) {
   randomPassword += userPassword[Math.floor(Math.random() * userPassword.length)]
-  console.log(randomPassword)
 }
+
+ // Password generated and returned to user
+console.log(randomPassword)
+return randomPassword
 }
 
 // Write password to the #password input
