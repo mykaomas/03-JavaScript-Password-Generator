@@ -25,6 +25,7 @@ function generatePassword() {
   console.log("Button was pressed")
 
   //var for password length
+  var lengthInput
   var passwordLength = prompt('Please select password length between 8 and 128')
 
   //User prompted to enter a password length of between 8 - 128
