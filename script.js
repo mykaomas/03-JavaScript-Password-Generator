@@ -15,7 +15,6 @@ const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 console.log(numbers)
 
 //Declare global variable 
-var userPassword
 var randomPassword
 
 //Create function to generate password with correct criteria
@@ -24,20 +23,20 @@ function generatePassword() {
   //Confirm button was pressed 
   console.log("Button was pressed")
 
-  //var for password length
-  var lengthInput
+  //User prompted to enter a password length of between 8 - 128
   var passwordLength = prompt('Please select password length between 8 and 128')
 
-  //User prompted to enter a password length of between 8 - 128
+
+  //Safeguards in place to make sure a number is entered and the length criteria is met
   //Question will cycle through until conditions are met
-  //(typeof lengthInput !== 'number') && NOT SURE HOW TO IMPLEMENT SAFEGUARD//
-    while (passwordLength < 8 || passwordLength > 128){
+    while (parseInt(passwordLength) < 8 || parseInt(passwordLength) > 128 || Number.isNaN(parseInt(passwordLength))){
+    //Verify while loop is working
+    console.log('Working');
     alert('Enter a number between 8 and 128')
-    console.log('Alert: Criteria not met for password');
+    console.log('Alert: Criteria not met for password', passwordLength);
     passwordLength = prompt('Please enter number between 8 and 128');
+    console.log('Password meets criteria');
   }
-    //Verify length that was selected on the backend
-    console.log(passwordLength)
     
     //Prompt for user
     alert('Please select the characters you want included in password.');
@@ -81,83 +80,44 @@ function generatePassword() {
     console.log('Password Generating');
       }
 
-//When all characters are selected
-
-  if (specialChar && upperCase && lowerCase && num) {
-  userPassword = specialCharacters.concat(upperCaseLetters, lowerCaseLetters, numbers)
-  console.log(userPassword)
-
-//When 3 characters are selected
-} else if (specialChar && upperCase && lowerCase) {
-  userPassword = specialCharacters.concat(upperCaseLetters, lowerCaseLetters)
-  console.log(userPassword)
-
-} else if (upperCase && lowerCase && num) {
-  userPassword = upperCaseLetters.concat(lowerCaseLetters, numbers)
-  console.log(userPassword)
-
-} else if (specialChar && lowerCase && num) {
-  userPassword = specialCharacters.concat(lowerCaseLetters, numbers)
-  console.log(userPassword)
-
-} else if (specialChar && upperCase && num) {
-  userPassword = specialCharacters.concat(upperCaseLetters, numbers)
-  console.log(userPassword)
-
-//When 2 characters are selected
-} else if (specialChar && upperCase) {
-  userPassword = specialCharacters.concat(upperCaseLetters)
-  console.log(userPassword)
-
-} else if (specialChar && lowerCase) {
-  userPassword = specialCharacters.concat(lowerCaseLetters)
-  console.log(userPassword)
-
-} else if (specialChar && num) {
-  userPassword = specialCharacters.concat(numbers)
-  console.log(userPassword)
-
-} else if (upperCase && lowerCase) {
-  userPassword = upperCaseLetters.concat(lowerCaseLetters)
-  console.log(userPassword)
-
-} else if (upperCase && num) {
-  userPassword = upperCaseLetters.concat(numbers)
-  console.log(userPassword)
-
-} else if (lowerCase && num) {
-  userPassword = lowerCaseLetters.concat(numbers)
-  console.log(userPassword)
-
-//Only 1 character was selected
-} else if(specialChar) {
-  userPassword = specialCharacters
-  console.log(userPassword)
-
-} else if(upperCase) {
-  userPassword = upperCaseLetters
-  console.log(userPassword)
-
-} else if(lowerCase) {
-  userPassword = lowerCaseLetters
-  console.log(userPassword)
-
-} else {
-  userPassword = numbers
-  console.log(userPassword)
-}
-
-//Spaces for passowrd length
-randomPassword = ''
-
-// Create a loop to randomize selection
-for (var i = 0; i < passwordLength; i++) {
-  randomPassword += userPassword[Math.floor(Math.random() * userPassword.length)]
-}
-
- // Password generated and returned to user
-console.log(randomPassword)
-return randomPassword
+//Puts user choices into an array
+      var userArray = []
+      if (lowerCase) {
+        userArray.push(lowerCaseLetters)
+      }
+      if (upperCase) {
+        userArray.push(upperCaseLetters)
+      }
+      if (specialChar) {
+        userArray.push(specialCharacters)
+      }
+      if (num) {
+        userArray.push(numbers)
+      }
+      if (userArray.length < 1) {
+        return
+      }
+      //Creates space for each character selected
+      randomPassword = ''
+      for (var i=0; i<=passwordLength; i++) {
+        console.log(userArray)
+        //Cycles through the Array's (special characters, lowcase letters, uppercase letters and numbers)
+        var arrayIndex = Math.floor(Math.random() * userArray.length)
+        console.log(arrayIndex)
+        //Chooses the selected Array
+        var randomArray = userArray[arrayIndex]
+        console.log(randomArray)
+        //Selects Indexes at random
+        var randomIndex = Math.floor(Math.random() * randomArray.length)
+        console.log(randomIndex)
+        //Selects characters from the selected index at random
+        var randomCharacter = randomArray[randomIndex]
+        //Concats random password with random character to produce a radomized password
+        randomPassword += randomCharacter
+      }
+        console.log(randomPassword)
+        //Returns password to user
+        return randomPassword
 }
 
 // Write password to the #password input
