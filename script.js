@@ -111,7 +111,7 @@ function generatePassword() {
         console.log(randomIndex);
         // Selects characters from the selected index at random
         var randomCharacter = randomArray[randomIndex];
-        // Concats random password with random character to produce a radomized password
+        // Concats random password with random character to produce password
         randomPassword += randomCharacter;
       }
         console.log(randomPassword);
