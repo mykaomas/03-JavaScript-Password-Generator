@@ -1,5 +1,5 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
 
 // Create arrays for characters needed in password
 const specialCharacters = ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '{', '}', '|', ':', ';', '<', ',', '>', '.', '?', '/'];
@@ -15,7 +15,7 @@ const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 console.log(numbers);
 
 // Declare global variable 
-var randomPassword;
+let randomPassword;
 
 // Create function to generate password with correct criteria
 function generatePassword() {
@@ -24,7 +24,7 @@ function generatePassword() {
   console.log("Button was pressed");
 
   // User prompted to enter a password length of between 8 - 128
-  var passwordLength = prompt('Please select password length between 8 and 128');
+  let passwordLength = prompt('Please select password length between 8 and 128');
 
   // Safeguards in place to make sure a number is entered and the length criteria is met
   // Question will cycle through until conditions are met
@@ -42,16 +42,16 @@ function generatePassword() {
 
     // Allows user to pick the characters they want in password
     // Verify what characters were selected on the backend
-    var specialChar = confirm ('Do you want special characters included in password?');
+    const specialChar = confirm ('Do you want special characters included in password?');
     console.log(specialChar);
 
-    var upperCase = confirm('Do you want uppercase letters included in password?');
+    const upperCase = confirm('Do you want uppercase letters included in password?');
     console.log(upperCase);
 
-    var lowerCase = confirm('Do you want lowercase letters included in password?');
+    const lowerCase = confirm('Do you want lowercase letters included in password?');
     console.log(lowerCase);
 
-    var num = confirm('Do you want numbers included in password?');
+    const num = confirm('Do you want numbers included in password?');
     console.log(num);
 
   // User prompted to pick atleast one character for password
@@ -80,7 +80,7 @@ function generatePassword() {
   console.log('Password Generating');
 
 // Puts user choices into an array
-      var userArray = [];
+      const userArray = [];
       if (lowerCase) {
         userArray.push(lowerCaseLetters)
       }
@@ -98,19 +98,19 @@ function generatePassword() {
       }
       // Creates space for each character selected
       randomPassword = ''
-      for (var i = 0; i <= passwordLength; i++) {
+      for (let i = 0; i <= passwordLength; i++) {
         console.log(userArray);
         // Cycles through the Array's (special characters, lowcase letters, uppercase letters and numbers)
-        var arrayIndex = Math.floor(Math.random() * userArray.length);
+        const arrayIndex = Math.floor(Math.random() * userArray.length);
         console.log(arrayIndex);
         // Chooses the selected Array
-        var randomArray = userArray[arrayIndex];
+        const randomArray = userArray[arrayIndex];
         console.log(randomArray)
         // Selects Indexes at random
-        var randomIndex = Math.floor(Math.random() * randomArray.length);
+        const randomIndex = Math.floor(Math.random() * randomArray.length);
         console.log(randomIndex);
         // Selects characters from the selected index at random
-        var randomCharacter = randomArray[randomIndex];
+        const randomCharacter = randomArray[randomIndex];
         // Concats random password with random character to produce password
         randomPassword += randomCharacter;
       }
@@ -121,8 +121,8 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
